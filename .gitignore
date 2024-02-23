@@ -1,0 +1,9 @@
+*.cfg
+*.ipynb
+
+Include/
+Lib/
+Scripts/
+
+app/validators.py
+app/.env
