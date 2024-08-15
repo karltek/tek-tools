@@ -1,0 +1,45 @@
+<section class="container">
+    <div class="field">
+        <label class="label">IP address extractor</label>
+        <div class="control">
+            <textarea class="textarea" placeholder="Enter your IP address(es) here!"></textarea>
+        </div>
+    </div>
+    <div id="ip-address">
+
+    </div>
+</section>
+<script>
+    // Select the textarea
+    let textarea = document.querySelector('.textarea');
+
+    // Select the ip-address element
+    let ipAddressElement = document.getElementById('ip-address');
+
+    // Add an event listener for the input event
+    textarea.addEventListener('input', function (event) {
+        // IP address regex 
+        let ipAddressRegex = /\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/g;
+
+        // Find matches
+        let ipAddressMatches = event.target.value.match(ipAddressRegex);
+
+        // Clear the ip-address element
+        ipAddressElement.innerHTML = '';
+
+        // Create an unordered list
+        let ul = document.createElement('ul');
+
+        // For each match, create a list item and append it to the unordered list
+        if (ipAddressMatches) {
+            ipAddressMatches.forEach(function (ipAddressMatch) {
+                let li = document.createElement('li');
+                li.textContent = ipAddressMatch;
+                ul.appendChild(li);
+            });
+        }
+
+        // Append the unordered list to the ip-address element
+        ipAddressElement.appendChild(ul);
+    });
+</script>
