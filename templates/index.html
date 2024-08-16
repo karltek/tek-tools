@@ -9,21 +9,6 @@
     <script src="https://unpkg.com/htmx.org@2.0.1"
         integrity="sha384-QWGpdj554B4ETpJJC9z+ZHJcA/i59TyjxEPXiiUgN2WmTyV5OEZWCD6gQhgkdpB/"
         crossorigin="anonymous"></script>
-    <script>
-        const url = `https://tek-tools.onrender.com/`; // Replace with your Render URL
-        const interval = 30000; // Interval in milliseconds (30 seconds)
-
-        function reloadWebsite() {
-            axios.get(url)
-                .then(response => {
-                    console.log(`Reloaded at ${new Date().toISOString()}: Status Code ${response.status}`);
-                })
-                .catch(error => {
-                    console.error(`Error reloading at ${new Date().toISOString()}:`, error.message);
-                });
-        }
-        setInterval(reloadWebsite, interval);    
-    </script>
 
     <style>
         html,
