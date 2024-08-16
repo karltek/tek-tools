@@ -9,26 +9,43 @@
     <script src="https://unpkg.com/htmx.org@2.0.1"
         integrity="sha384-QWGpdj554B4ETpJJC9z+ZHJcA/i59TyjxEPXiiUgN2WmTyV5OEZWCD6gQhgkdpB/"
         crossorigin="anonymous"></script>
+    <script>
+        const url = `https://tek-tools.onrender.com/`; // Replace with your Render URL
+        const interval = 30000; // Interval in milliseconds (30 seconds)
+
+        function reloadWebsite() {
+            axios.get(url)
+                .then(response => {
+                    console.log(`Reloaded at ${new Date().toISOString()}: Status Code ${response.status}`);
+                })
+                .catch(error => {
+                    console.error(`Error reloading at ${new Date().toISOString()}:`, error.message);
+                });
+        }
+        setInterval(reloadWebsite, interval);    
+    </script>
+
+    <style>
+        html,
+        body {
+            height: 100vh;
+        }
+    </style>
+
 </head>
 
 <body>
-    {% include "navbar.html" ignore missing %}
-    {% include "ip-to-list.html" ignore missing %}
+    <div class="hero is-fullheight">
+        {% include "navbar.html" ignore missing %}
 
+        {% include "ip-to-list.html" ignore missing %}
 
-    <script>
-        $(document).ready(function () {
-
-            // Check for click events on the navbar burger icon
-            $(".navbar-burger").click(function () {
-
-                // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-                $(".navbar-burger").toggleClass("is-active");
-                $(".navbar-menu").toggleClass("is-active");
-
-            });
-        });
-    </script>
+        <footer class="footer section is-small mgt-small">
+            <div class="content has-text-centered">
+                <p>Made by KE</p>
+            </div>
+        </footer>
+    </div>
 </body>
 
 </html>
